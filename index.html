@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>小红书标题生成器</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:640px;margin:40px auto;padding:0 16px}
+input,select,button{font-size:16px;padding:8px;margin:6px 0;width:100%}
+button{background:#ff2442;color:#fff;border:0;border-radius:8px;cursor:pointer}
+li{margin:8px 0}
+</style>
+</head>
+<body>
+<h1>小红书标题生成器</h1>
+<p>输入关键词，选一个行业，生成 10 个标题灵感。点标题即可复制。</p>
+<input id="kw" placeholder="比如：平价粉底液 / 蛋糕店 / 减脂餐">
+<select id="cat">
+<option>美妆</option><option>美食</option><option>穿搭</option>
+<option>职场</option><option>母婴</option><option>家居</option><option>本地小店</option>
+</select>
+<button onclick="gen()">生成标题</button>
+<ul id="out"></ul>
+<script>
+const T=[
+"后悔没早知道！{kw}原来要这样选",
+"{kw}测评｜用了7天，说点大实话",
+"新手必看：{kw}避坑指南，不花冤枉钱",
+"被问爆的{kw}，一次性说清楚",
+"{kw}｜{cat}小白照着抄就行",
+"预算有限怎么选{kw}？这篇够了",
+"朋友都以为我花了大钱，其实是{kw}",
+"{kw}的3个隐藏用法，第2个绝了",
+"别再乱买{kw}了，先看完这篇",
+"从0到1：我的{kw}入门清单"];
+function gen(){
+ const kw=document.getElementById('kw').value.trim()||'这个好物';
+ const cat=document.getElementById('cat').value;
+ document.getElementById('out').innerHTML=T.map(t=>{
+   const s=t.replaceAll('{kw}',kw).replaceAll('{cat}',cat);
+   return `<li onclick="navigator.clipboard&&navigator.clipboard.writeText('${s}')">${s}</li>`}).join('');
+}
+</script>
+</body>
+</html>
