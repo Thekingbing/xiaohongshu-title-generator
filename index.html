@@ -12,11 +12,11 @@ li{margin:8px 0}
 </head>
 <body>
 <h1>小红书标题生成器</h1>
-<p>输入关键词，选一个行业，生成 10 个标题灵感。点标题即可复制。</p>
+<p>输入关键词，选一个行业，生成 12 个标题灵感。点标题即可复制。</p>
 <input id="kw" placeholder="比如：平价粉底液 / 蛋糕店 / 减脂餐">
 <select id="cat">
 <option>美妆</option><option>美食</option><option>穿搭</option>
-<option>职场</option><option>母婴</option><option>家居</option><option>本地小店</option>
+<option>职场</option><option>母婴</option><option>家居</option><option>本地小店</option><option>运动健身</option>
 </select>
 <button onclick="gen()">生成标题</button>
 <ul id="out"></ul>
@@ -31,7 +31,9 @@ const T=[
 "朋友都以为我花了大钱，其实是{kw}",
 "{kw}的3个隐藏用法，第2个绝了",
 "别再乱买{kw}了，先看完这篇",
-"从0到1：我的{kw}入门清单"];
+"从0到1：我的{kw}入门清单",
+"{kw}坚持30天，变化大到不敢认",
+"花了3个月摸索{kw}，总结成这一篇"];
 function gen(){
  const kw=document.getElementById('kw').value.trim()||'这个好物';
  const cat=document.getElementById('cat').value;
